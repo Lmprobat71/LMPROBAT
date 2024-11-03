@@ -31,6 +31,6 @@ function loadHTML(elementId, url) {
 
 // Charger le menu et le footer une fois le DOM prêt
 document.addEventListener('DOMContentLoaded', function() {
-    loadHTML('menu-container', '/menu.html');
-    loadHTML('footer-container', '/footer.html');
+    loadHTML('menu-container', 'menu.html');
+    loadHTML('footer-container', 'footer.html');
 });

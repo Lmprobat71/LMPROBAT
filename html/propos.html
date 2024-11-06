@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMProbat - Entreprise du Bâtiment</title>
+    <meta name="description" content="LMProbat est une entreprise de bâtiment située à Gueugnon, spécialisée dans la plâtrerie, peinture, carrelage, faïence, maçonnerie, façade et enduit intérieur et extérieur.">
+    <meta name="keywords" content="LMProbat, bâtiment, plâtrerie, peinture, carrelage, faïence, maçonnerie, façade, enduit intérieur, enduit extérieur, Gueugnon">
+    <meta name="author" content="LMProbat">
+    <link rel="stylesheet" href="/homestyle.css">
+</head>
+<body>
+    <!-- Conteneur pour le menu -->
+    <div id="menu-container"></div>
+
+        <section id="about">
+            <h2>À propos de nous</h2>
+            <p>LMProbat est une entreprise de bâtiment renommée, basée à Gueugnon et présente dans de nombreuses grandes villes telles que Dijon, Lyon, Limoges et Clermont-Ferrand. Nos domaines d'expertise incluent la plâtrerie, la peinture, le carrelage, la faïence, la maçonnerie, les façades et les enduits intérieurs et extérieurs. Nous nous engageons à fournir un travail de qualité supérieure, en respectant les délais et en assurant la satisfaction totale de nos clients. Faites confiance à LMProbat pour tous vos projets de construction et de rénovation.</p>
+        </section>
+    </div>
+
+    <!-- Conteneur pour le footer -->
+    <div id="footer-container"></div>
+
+    <script src="/homejs.js"></script>
+    <script>
+        function showDescription(element) {
+            const content = element.querySelector('.service-content');
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMProbat - Entreprise du Bâtiment</title>
+    <meta name="description" content="LMProbat est une entreprise de bâtiment située à Gueugnon, spécialisée dans la plâtrerie, peinture, carrelage, faïence, maçonnerie, façade et enduit intérieur et extérieur.">
+    <meta name="keywords" content="LMProbat, bâtiment, plâtrerie, peinture, carrelage, faïence, maçonnerie, façade, enduit intérieur, enduit extérieur, Gueugnon">
+    <meta name="author" content="LMProbat">
+    <link rel="stylesheet" href="/css/homestyle.css">
+    
+</head>
+<body>
+    <!-- Conteneur plein écran pour le GIF avec fond transparent -->
+    <div id="gif-overlay">
+        <img id="welcome-gif" src="/images/animation-bienvenue.gif" alt="Animation de bienvenue">
+        <img id="welcome-png" src="/images/image-bienvenue.png" alt="Image de bienvenue" style="display: none;">
+    </div>
+<header class="custom-header">
+    <!-- Contenu du header -->
+</header>
+
+    <!-- Conteneur pour le menu -->
+    <nav id="menu-container"></nav> <!-- Utiliser <nav> pour le menu -->
+
+    <!-- Section About -->
+    <section id="about">
+        <h2>Bienvenue chez LMProbat</h2>
+        <p>LMProbat est une entreprise de bâtiment renommée, basée à Gueugnon et opérant dans plusieurs grandes villes comme Dijon, Lyon, Limoges et Clermont-Ferrand. Nous sommes spécialisés dans divers domaines du bâtiment, notamment la plâtrerie, la peinture, le carrelage, la faïence, la maçonnerie, ainsi que les travaux de façade et d'enduit intérieur et extérieur.</p>
+        <p>Avec 15 ans d'expérience professionnelle, notre mission est de fournir des prestations de haute qualité en respectant les délais et en assurant la satisfaction totale de nos clients. Grâce à notre expertise et à notre engagement envers l'excellence, nous avons su gagner la confiance de nombreux clients pour leurs projets de construction et de rénovation.</p>
+        <p>Que ce soit pour des travaux de rénovation ou de construction neuve, LMProbat met à votre service son savoir-faire et son professionnalisme pour transformer vos idées en réalité.</p>
+        <p>Faites confiance à LMProbat pour tous vos projets de construction et de rénovation. Ensemble, réalisons vos ambitions!</p>
+    </section>
+    
+    <!-- Section Témoignages -->
+    <section id="testimonials">
+        <h2>Témoignages</h2>
+        <div class="testimonial">
+            <p>"LMProbat a transformé notre maison ! Travail impeccable et équipe professionnelle." - Client Satisfait</p>
+        </div>
+        <div class="testimonial">
+            <p>"Excellent service et respect des délais. Nous recommandons vivement LMProbat pour tous travaux de rénovation." - Famille Dupont</p>
+        </div>
+        <div class="testimonial">
+            <p>"Leur attention aux détails et la qualité du travail sont exceptionnelles. Merci, LMProbat!" - Mme Martin</p>
+        </div>
+    </section>
+
+    <!-- Icône fixe en bas à droite -->
+    <img src="/images/icontel.png" alt="Icône téléphone" class="fixed-icon">
+    
+    <!-- Appel à l'Action -->
+    <div class="cta">
+        <a href="#contact" class="cta-button">Demandez un Devis</a>
+    </div>
+
+    <!-- Conteneur pour le footer -->
+    <footer id="footer-container"></footer> <!-- Utiliser <footer> pour le footer -->
+
+    <script src="/js/homejs.js"></script>
+    <script>
+        // Fonction pour remplacer le GIF par le PNG
+        function replaceGifWithPng() {
+            document.getElementById('welcome-gif').style.display = 'none';
+            document.getElementById('welcome-png').style.display = 'block';
+        }
+
+        // Fonction pour déplacer, tourner, et réduire le PNG
+        function animatePng() {
+            const pngImage = document.getElementById('welcome-png');
+            pngImage.classList.add('animate-bottom-right');
+        }
+
+        // Remplacer le GIF par le PNG après 2 secondes
+        setTimeout(replaceGifWithPng, 2000);
+
+        // Animer le PNG après 3 secondes (1 seconde après le remplacement)
+        setTimeout(animatePng, 3000);
+    </script
+
+    <script src="/Laetitia/homejs.js"></script>
+    <script>
+        // Fonction pour remplacer le GIF par le PNG
+        function replaceGifWithPng() {
+            document.getElementById('welcome-gif').style.display = 'none';
+            document.getElementById('welcome-png').style.display = 'block';
+        }
+
+        // Fonction pour déplacer, tourner, et réduire le PNG
+        function animatePng() {
+            const pngImage = document.getElementById('welcome-png');
+            pngImage.classList.add('animate-bottom-right');
+        }
+
+        // Remplacer le GIF par le PNG après 2 secondes
+        setTimeout(replaceGifWithPng, 2000);
+
+        // Animer le PNG après 3 secondes (1 seconde après le remplacement)
+        setTimeout(animatePng, 3000);
+
+        // Masquer le PNG après 5 secondes
+        setTimeout(() => {
+            document.getElementById('gif-overlay').style.display = 'none';
+        }, 5000);
+    </script>
+</body>
+</html>

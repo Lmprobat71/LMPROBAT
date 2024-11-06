@@ -1,0 +1,12 @@
+Nom: Jean Dupont
+Email: jean.dupont@example.com
+Commentaire: Très beau site web ! Continuez comme ça.
+-------------------------
+Nom: Marie Durand
+Email: marie.durand@example.com
+Commentaire: J'ai adoré visiter votre site, très informatif et bien conçu.
+-------------------------
+Nom: Pierre Martin
+Email: pierre.martin@example.com
+Commentaire: Merci pour toutes les informations, c'était très utile.
+-------------------------

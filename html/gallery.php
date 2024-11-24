@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$directory = $_SERVER['DOCUMENT_ROOT'] . '/images/Galery/'; // Chemin absolu
+$directory = $_SERVER['DOCUMENT_ROOT'] . '/images/Galery/'; // Chemin absolu vers le dossier des images
 $images = glob($directory . '*.{jpg,jpeg,png,gif}', GLOB_BRACE);
 
 // Vérifiez si des images ont été trouvées

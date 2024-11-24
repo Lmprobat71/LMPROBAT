@@ -3,89 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LMProbat - Entreprise du Bâtiment</title>
-    <meta name="description" content="LMProbat est une entreprise de bâtiment située à Gueugnon, spécialisée dans la plâtrerie, peinture, carrelage, faïence, maçonnerie, façade et enduit intérieur et extérieur.">
+    <title>LM Probat - Entreprise du Bâtiment</title>
+    <meta name="description" content="LM Probat est une entreprise de bâtiment située à Gueugnon, spécialisée dans la plâtrerie, peinture, carrelage, faïence, maçonnerie, façade et enduit intérieur et extérieur.">
     <meta name="keywords" content="LMProbat, bâtiment, plâtrerie, peinture, carrelage, faïence, maçonnerie, façade, enduit intérieur, enduit extérieur, Gueugnon">
-    <meta name="author" content="LMProbat">
-    <link rel="stylesheet" href="/css/homestyle.css">
+    <meta name="author" content="LM Probat">
+    <link rel="stylesheet" href="/css/homestyle3.css">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <style>
     /* Styles pour l'icône fixe en bas à droite */
     .fixed-icon {
-        position: fixed;
-        bottom: 10px; /* Espace du bord bas */
-        right: 10px; /* Espace du bord droit */
-        width: 8vw; /* Largeur relative pour les petits écrans */
-        max-width: 100px; /* Limite la taille maximale de l'icône */
-        height: auto; /* Hauteur auto pour garder les proportions */
-        z-index: 10000; /* Assure que l'icône est au-dessus de tout */
-        cursor: pointer; /* Indique que l'icône est cliquable */
+        position: fixed; /* Positionne l'icône de manière fixe par rapport à la fenêtre */
+        bottom: 10px; /* Espace entre l'icône et le bord inférieur de la fenêtre */
+        right: 10px; /* Espace entre l'icône et le bord droit de la fenêtre */
+        width: 10vw; /* Largeur relative à la largeur de la fenêtre */
+        max-width: 110px; /* Limite la largeur maximale de l'icône */
+        height: auto; /* Conserve les proportions de l'image */
+        z-index: 10000; /* Place l'icône au-dessus des autres éléments */
+        cursor: pointer; /* Change le curseur pour indiquer que l'élément est cliquable */
     }
 
     /* Styles pour le conteneur du GIF en plein écran */
     #gif-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(255, 255, 255, 0); /* Fond totalement transparent */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999; /* Place le GIF au-dessus de tout */
-        transition: all 1s ease; /* Transition pour toutes les propriétés */
+        position: fixed; /* Positionne le GIF par rapport à la fenêtre */
+        top: 0; /* Place le conteneur au bord supérieur */
+        left: 0; /* Place le conteneur au bord gauche */
+        width: 100vw; /* Prend toute la largeur de la fenêtre */
+        height: 100vh; /* Prend toute la hauteur de la fenêtre */
+        background-color: rgba(255, 255, 255, 0); /* Fond totalement transparent pour afficher uniquement le GIF */
+        display: flex; /* Utilise Flexbox pour centrer le contenu */
+        justify-content: center; /* Centre horizontalement le GIF */
+        align-items: center; /* Centre verticalement le GIF */
+        z-index: 9999; /* Place le GIF juste en dessous de l'icône fixe */
+        transition: all 1s ease; /* Ajoute une transition fluide pour toutes les modifications de style */
     }
 
+    /* Styles pour l'image (GIF) à l'intérieur du conteneur */
     #gif-overlay img {
-        width: auto;
-        height: auto;
-        max-width: 100%; /* Taille initiale maximale */
-        max-height: 100%;
+        width: auto; /* Conserve la largeur d'origine du GIF */
+        height: auto; /* Conserve la hauteur d'origine du GIF */
+        max-width: 100%; /* Limite la largeur du GIF à la taille de la fenêtre */
+        max-height: 100%; /* Limite la hauteur du GIF à la taille de la fenêtre */
     }
 
     /* Animation pour la rotation et la réduction de taille */
     @keyframes rotateAndShrink {
         0% {
-            transform: translate(0, 0) scale(1) rotate(0deg);
+            transform: translate(0, 0) scale(1) rotate(0deg); /* Départ : position normale sans rotation ni réduction */
         }
         100% {
-            transform: translate(calc(100vw - 100px), calc(100vh - 100px)) scale(0.1) rotate(360deg);
+            transform: translate(calc(100vw - 100px), calc(100vh - 100px)) scale(0.1) rotate(360deg); /* Arrivée : déplace vers le coin inférieur droit, réduit la taille et effectue une rotation complète */
         }
     }
 
-    /* Styles appliqués pour déplacer, tourner, et réduire le PNG en bas à droite */
+    /* Styles appliqués pour déplacer, tourner et réduire le PNG vers le coin inférieur droit */
     .animate-bottom-right {
-        animation: rotateAndShrink 2s ease forwards; /* Animation sur 2 secondes avec easing */
+        animation: rotateAndShrink 3s ease forwards; /* Lance l'animation sur 2 secondes avec un easing pour une transition fluide */
     }
 
     /* Media queries pour le responsive design */
     @media (max-width: 768px) {
+        /* Ajustements pour les tablettes et petits écrans */
         #gif-overlay img {
-            max-width: 70%; /* Taille ajustée pour les écrans plus petits */
-            max-height: 70%;
+            max-width: 70%; /* Réduit la taille maximale du GIF à 70% de la fenêtre */
+            max-height: 70%; /* Réduit la hauteur maximale du GIF à 70% de la fenêtre */
         }
 
         .fixed-icon {
-            width: 12vw; /* Taille relative pour les petits écrans */
-            max-width: 100px; /* Limite la taille maximale */
+            width: 12vw; /* Augmente légèrement la largeur relative de l'icône */
+            max-width: 100px; /* Maintient la limite maximale de la largeur */
         }
     }
 
     /* Styles pour les très petits écrans (smartphones) */
     @media (max-width: 480px) {
         #gif-overlay img {
-            max-width: 90%;
-            max-height: 60%;
+            max-width: 90%; /* Augmente la taille maximale du GIF pour l'adapter à de petits écrans */
+            max-height: 60%; /* Réduit légèrement la hauteur maximale pour éviter les débordements */
         }
 
         .fixed-icon {
-            width: 15vw;
-            max-width: 100px; /* Limite la taille maximale */
+            width: 20vw; /* Augmente encore la largeur relative pour compenser les petits écrans */
+            max-width: 100px; /* Maintient la limite maximale de la largeur */
         }
 
-        /* Ajustements pour l'animation */
+        /* Ajustements pour l'animation sur les petits écrans */
         .animate-bottom-right {
-            animation: rotateAndShrink 1.5s ease forwards;
+            animation: rotateAndShrink 1.5s ease forwards; /* Accélère l'animation pour s'adapter aux smartphones */
         }
     }
 </style>
@@ -99,19 +102,19 @@
 <header class="custom-header">
     <!-- Contenu du header -->
 </header>
-
+<main>
     <!-- Conteneur pour le menu -->
     <nav id="menu-container"></nav> <!-- Utiliser <nav> pour le menu -->
 
     <!-- Section About -->
     <section id="about">
-        <h2>Bienvenue chez LMProbat</h2>
-        <p>LMProbat est une entreprise de bâtiment renommée, basée à Gueugnon et opérant dans plusieurs grandes villes comme Dijon, Lyon, Limoges et Clermont-Ferrand. Nous sommes spécialisés dans divers domaines du bâtiment, notamment la plâtrerie, la peinture, le carrelage, la faïence, la maçonnerie, ainsi que les travaux de façade et d'enduit intérieur et extérieur.</p>
-        <p>Avec 15 ans d'expérience professionnelle, notre mission est de fournir des prestations de haute qualité en respectant les délais et en assurant la satisfaction totale de nos clients. Grâce à notre expertise et à notre engagement envers l'excellence, nous avons su gagner la confiance de nombreux clients pour leurs projets de construction et de rénovation.</p>
-        <p>Que ce soit pour des travaux de rénovation ou de construction neuve, LMProbat met à votre service son savoir-faire et son professionnalisme pour transformer vos idées en réalité.</p>
-        <p>Faites confiance à LMProbat pour tous vos projets de construction et de rénovation. Ensemble, réalisons vos ambitions!</p>
-    </section>
-    
+<h2>Bienvenue chez LM Probat</h2>  
+<p>LM Probat est une entreprise de bâtiment de renom, basée à Gueugnon et active dans plusieurs grandes villes telles que Dijon, Lyon, Limoges et Clermont-Ferrand. Nous sommes spécialisés dans de nombreux domaines du bâtiment, notamment la plâtrerie, la peinture, le carrelage, la faïence, la maçonnerie, ainsi que les travaux de façade et les enduits intérieurs et extérieurs.</p>  
+<p>Forte de 15 années d'expérience, notre mission est de fournir des prestations de haute qualité, en respectant les délais et en garantissant la satisfaction totale de nos clients. Grâce à notre expertise et à notre engagement envers l'excellence, nous avons su gagner la confiance de nombreux particuliers et professionnels pour leurs projets de constructions et de rénovation.</p>  
+<p>Que ce soit pour des travaux de rénovation ou pour une construction neuve, LM Probat met à votre disposition son savoir-faire et son professionnalisme afin de transformer vos idées en réalité.</p>  
+<p>Faites confiance à LM Probat pour tous vos projets de constructions et de rénovation. Ensemble, concrétisons vos ambitions !</p>  
+
+
     <!-- Section Témoignages -->
     <section id="testimonials">
         <h2>Témoignages</h2>
@@ -127,38 +130,15 @@
     </section>
 
     <!-- Icône fixe en bas à droite -->
-    <img src="/images/icontel.png" alt="Icône téléphone" class="fixed-icon">
-    
+<a href="/html/contact.html">
+    <img src="/images/contactnous.png" alt="Icône contacteznous" class="fixed-icon">
+</a>
     <!-- Appel à l'Action -->
     <div class="cta">
-        <a href="#contact" class="cta-button">Demandez un Devis</a>
+        <a href="/html/contact.html" class="cta-button">Demandez un Devis</a>
     </div>
-
-    <!-- Conteneur pour le footer -->
-    <footer id="footer-container"></footer> <!-- Utiliser <footer> pour le footer -->
-
+</main>
     <script src="/js/homejs.js"></script>
-    <script>
-        // Fonction pour remplacer le GIF par le PNG
-        function replaceGifWithPng() {
-            document.getElementById('welcome-gif').style.display = 'none';
-            document.getElementById('welcome-png').style.display = 'block';
-        }
-
-        // Fonction pour déplacer, tourner, et réduire le PNG
-        function animatePng() {
-            const pngImage = document.getElementById('welcome-png');
-            pngImage.classList.add('animate-bottom-right');
-        }
-
-        // Remplacer le GIF par le PNG après 2 secondes
-        setTimeout(replaceGifWithPng, 2000);
-
-        // Animer le PNG après 3 secondes (1 seconde après le remplacement)
-        setTimeout(animatePng, 3000);
-    </script
-
-    <script src="/Laetitia/homejs.js"></script>
     <script>
         // Fonction pour remplacer le GIF par le PNG
         function replaceGifWithPng() {
@@ -181,7 +161,12 @@
         // Masquer le PNG après 5 secondes
         setTimeout(() => {
             document.getElementById('gif-overlay').style.display = 'none';
-        }, 15000);
+        }, 5000);
     </script>
+    <footer id="footer-container">
+            <!-- Contenu du footer -->
+            <a href="#">Lien footer</a>
+            <img src="logo.png" alt="Logo">
+        </footer>
 </body>
 </html>

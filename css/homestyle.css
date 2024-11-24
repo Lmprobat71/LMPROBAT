@@ -32,7 +32,7 @@ header, footer {
 header {
     padding: 150px 0;
     text-align: center;
-    background-image: url('/images/heater.png');
+    background-image: url('/images/heater.jpg');
     background-size: cover;
     background-position: center;
     color: var(--white);

@@ -7,27 +7,45 @@
     <meta name="description" content="LMProbat est une entreprise de bâtiment située à Gueugnon, spécialisée dans la plâtrerie, peinture, carrelage, faïence, maçonnerie, façade et enduit intérieur et extérieur.">
     <meta name="keywords" content="LMProbat, bâtiment, plâtrerie, peinture, carrelage, faïence, maçonnerie, façade, enduit intérieur, enduit extérieur, Gueugnon">
     <meta name="author" content="LMProbat">
-    <link rel="stylesheet" href="/homestyle.css">
-</head>
-<body>
-    <!-- Conteneur pour le menu -->
-    <div id="menu-container"></div>
-
-        <section id="about">
-            <h2>À propos de nous</h2>
-            <p>LMProbat est une entreprise de bâtiment renommée, basée à Gueugnon et présente dans de nombreuses grandes villes telles que Dijon, Lyon, Limoges et Clermont-Ferrand. Nos domaines d'expertise incluent la plâtrerie, la peinture, le carrelage, la faïence, la maçonnerie, les façades et les enduits intérieurs et extérieurs. Nous nous engageons à fournir un travail de qualité supérieure, en respectant les délais et en assurant la satisfaction totale de nos clients. Faites confiance à LMProbat pour tous vos projets de construction et de rénovation.</p>
-        </section>
-    </div>
-
-    <!-- Conteneur pour le footer -->
-    <div id="footer-container"></div>
-
-    <script src="/homejs.js"></script>
-    <script>
-        function showDescription(element) {
-            const content = element.querySelector('.service-content');
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    <link rel="stylesheet" href="/css/homestyle.css">
+    <style>
+    /* Styles pour l'icône fixe en bas à droite */
+    .fixed-icon {
+        position: fixed;
+        bottom: 10px; /* Espace du bord bas */
+        right: 10px; /* Espace du bord droit */
+        width: 8vw; /* Largeur relative pour les petits écrans */
+        max-width: 100px; /* Limite la taille maximale de l'icône */
+        height: auto; /* Hauteur auto pour garder les proportions */
+        z-index: 10000; /* Assure que l'icône est au-dessus de tout */
+        cursor: pointer; /* Indique que l'icône est cliquable */
+    }
+/* Media queries pour le responsive design */
+    @media (max-width: 768px) {
+        .fixed-icon {
+            width: 12vw; /* Taille relative pour les petits écrans */
+            max-width: 100px; /* Limite la taille maximale */
         }
-    </script>
+    }
+
+    /* Styles pour les très petits écrans (smartphones) */
+    @media (max-width: 480px) {
+        .fixed-icon {
+            width: 15vw;
+            max-width: 100px; /* Limite la taille maximale */
+        }
+    }
+</style>
+<body>
+<header class="custom-header">
+    <!-- Contenu du header -->
+</header>
+<!-- Conteneur pour le menu -->
+    <nav id="menu-container"></nav> <!-- Utiliser <nav> pour le menu -->
+<!-- Conteneur pour le footer -->
+    <footer id="footer-container"></footer> <!-- Utiliser <footer> pour le footer -->
+
+    <script src="/js/homejs.js"></script>
 </body>
 </html>
+

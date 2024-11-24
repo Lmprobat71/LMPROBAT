@@ -2,6 +2,7 @@
     php56 1
 </IfDefine>
 
+
 # Désactiver l'indexation des répertoires
 Options -Indexes
 

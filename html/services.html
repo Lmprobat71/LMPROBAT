@@ -3,15 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LMProbat - Entreprise du Bâtiment</title>
-    <meta name="description" content="LMProbat est une entreprise de bâtiment située à Gueugnon, spécialisée dans la plâtrerie, peinture, carrelage, faïence, maçonnerie, façade et enduit intérieur et extérieur.">
+    <title>LM Probat - Entreprise du Bâtiment</title>
+    <meta name="description" content="LM Probat est une entreprise de bâtiment située à Gueugnon, spécialisée dans la plâtrerie, peinture, carrelage, faïence, maçonnerie, façade et enduit intérieur et extérieur.">
     <meta name="keywords" content="LMProbat, bâtiment, plâtrerie, peinture, carrelage, faïence, maçonnerie, façade, enduit intérieur, enduit extérieur, Gueugnon">
-    <meta name="author" content="LMProbat">
-    <link rel="stylesheet" href="/homestyle.css">
+    <meta name="author" content="LM Probat">
+    <link rel="stylesheet" href="/css/homestyle3.css">
+    <link rel="icon" href="/path/to/favicon.ico" type="image/x-icon">
+    <style>
+    /* Styles pour l'icône fixe en bas à droite */
+    .fixed-icon {
+        position: fixed; /* Positionne l'icône de manière fixe par rapport à la fenêtre */
+        bottom: 10px; /* Espace entre l'icône et le bord inférieur de la fenêtre */
+        right: 10px; /* Espace entre l'icône et le bord droit de la fenêtre */
+        width: 10vw; /* Largeur relative à la largeur de la fenêtre */
+        max-width: 110px; /* Limite la largeur maximale de l'icône */
+        height: auto; /* Conserve les proportions de l'image */
+        z-index: 10000; /* Place l'icône au-dessus des autres éléments */
+        cursor: pointer; /* Change le curseur pour indiquer que l'élément est cliquable */
+    }
+
+    /* Styles pour le conteneur du GIF en plein écran */
+    #gif-overlay {
+        position: fixed; /* Positionne le GIF par rapport à la fenêtre */
+        top: 0; /* Place le conteneur au bord supérieur */
+        left: 0; /* Place le conteneur au bord gauche */
+        width: 100vw; /* Prend toute la largeur de la fenêtre */
+        height: 100vh; /* Prend toute la hauteur de la fenêtre */
+        background-color: rgba(255, 255, 255, 0); /* Fond totalement transparent pour afficher uniquement le GIF */
+        display: flex; /* Utilise Flexbox pour centrer le contenu */
+        justify-content: center; /* Centre horizontalement le GIF */
+        align-items: center; /* Centre verticalement le GIF */
+        z-index: 9999; /* Place le GIF juste en dessous de l'icône fixe */
+        transition: all 1s ease; /* Ajoute une transition fluide pour toutes les modifications de style */
+    }
+
+    /* Styles pour l'image (GIF) à l'intérieur du conteneur */
+    #gif-overlay img {
+        width: auto; /* Conserve la largeur d'origine du GIF */
+        height: auto; /* Conserve la hauteur d'origine du GIF */
+        max-width: 100%; /* Limite la largeur du GIF à la taille de la fenêtre */
+        max-height: 100%; /* Limite la hauteur du GIF à la taille de la fenêtre */
+    }
+
+    /* Animation pour la rotation et la réduction de taille */
+    @keyframes rotateAndShrink {
+        0% {
+            transform: translate(0, 0) scale(1) rotate(0deg); /* Départ : position normale sans rotation ni réduction */
+        }
+        100% {
+            transform: translate(calc(100vw - 100px), calc(100vh - 100px)) scale(0.1) rotate(360deg); /* Arrivée : déplace vers le coin inférieur droit, réduit la taille et effectue une rotation complète */
+        }
+    }
+
+    /* Styles appliqués pour déplacer, tourner et réduire le PNG vers le coin inférieur droit */
+    .animate-bottom-right {
+        animation: rotateAndShrink 3s ease forwards; /* Lance l'animation sur 2 secondes avec un easing pour une transition fluide */
+    }
+
+    /* Media queries pour le responsive design */
+    @media (max-width: 768px) {
+        /* Ajustements pour les tablettes et petits écrans */
+        #gif-overlay img {
+            max-width: 70%; /* Réduit la taille maximale du GIF à 70% de la fenêtre */
+            max-height: 70%; /* Réduit la hauteur maximale du GIF à 70% de la fenêtre */
+        }
+
+        .fixed-icon {
+            width: 12vw; /* Augmente légèrement la largeur relative de l'icône */
+            max-width: 100px; /* Maintient la limite maximale de la largeur */
+        }
+    }
+
+    /* Styles pour les très petits écrans (smartphones) */
+    @media (max-width: 480px) {
+        #gif-overlay img {
+            max-width: 90%; /* Augmente la taille maximale du GIF pour l'adapter à de petits écrans */
+            max-height: 60%; /* Réduit légèrement la hauteur maximale pour éviter les débordements */
+        }
+    }
+</style>
 </head>
 <body>
+<header class="custom-header">
+    <!-- Contenu du header -->
+</header>
+<main>
     <!-- Conteneur pour le menu -->
-    <div id="menu-container"></div>
+    <nav id="menu-container"></nav> <!-- Utiliser <nav> pour le menu -->
 
     <!-- Section des services avec un design en bulles -->
     <div class="container">
@@ -19,42 +97,42 @@
             <h2>Nos Services</h2>
             <div class="services-bubble-grid">
                 <div class="service-bubble" onclick="showDescription(this)">
-                    <img src="/photo1.jpeg" alt="Plâtrerie">
+                    <img src="/images/photo1.jpeg" alt="Plâtrerie">
                     <h3>Plâtrerie</h3>
                     <div class="service-content">
                         <p>Nous réalisons des travaux de plâtrerie tels que l'installation de cloisons, la pose de faux plafonds, et la finition des surfaces avec des plâtres lisses et durables.</p>
                     </div>
                 </div>
                 <div class="service-bubble" onclick="showDescription(this)">
-                    <img src="/photo2.jpeg" alt="Peinture">
+                    <img src="/images/photo2.jpeg" alt="Peinture">
                     <h3>Peinture</h3>
                     <div class="service-content">
                         <p>Notre équipe est spécialisée dans la peinture intérieure et extérieure, utilisant des produits de haute qualité pour des finitions impeccables et durables.</p>
                     </div>
                 </div>
                 <div class="service-bubble" onclick="showDescription(this)">
-                    <img src="/photo3.jpeg" alt="Carrelage">
+                    <img src="/images//photo3.jpeg" alt="Carrelage">
                     <h3>Carrelage</h3>
                     <div class="service-content">
                         <p>Nous offrons des services de pose de carrelage pour sols et murs, en utilisant des techniques précises pour des résultats esthétiques et résistants.</p>
                     </div>
                 </div>
                 <div class="service-bubble" onclick="showDescription(this)">
-                    <img src="/photo4.jpeg" alt="Exterieur">
+                    <img src="/images//photo4.jpeg" alt="Exterieur">
                     <h3>Exterieur</h3>
                     <div class="service-content">
                         <p>Nous effectuons la mise en œuvre d’enrobé à chaud pour les entrées de garage, parkings, chemins, ainsi que la pose de pavés et de murs de soutènement.</p>
                     </div>
                 </div>
                 <div class="service-bubble" onclick="showDescription(this)">
-                    <img src="/photo5.jpeg" alt="Maçonnerie">
+                    <img src="/images//photo5.jpeg" alt="Maçonnerie">
                     <h3>Maçonnerie</h3>
                     <div class="service-content">
                         <p>Nous réalisons des travaux de maçonnerie générale, incluant fondations, murs, ouvertures, rénovations, dallages, extensions, et démolitions.</p>
                     </div>
                 </div>
                 <div class="service-bubble" onclick="showDescription(this)">
-                    <img src="/photo6.jpeg" alt="Façade">
+                    <img src="/images//photo6.jpeg" alt="Façade">
                     <h3>Façade</h3>
                     <div class="service-content">
                         <p>Nous rénovons et entretenons les façades en utilisant des techniques modernes et des matériaux de qualité pour assurer longévité et esthétique.</p>
@@ -62,15 +140,14 @@
                 </div>
             </div>
         </section>
-    <!-- Conteneur pour le footer -->
-    <div id="footer-container"></div>
+<!-- Icône fixe en bas à droite -->
+<a href="/html/contact.html">
+    <img src="/images/contactnous.png" alt="Icône téléphone" class="fixed-icon">
+</a>
+</main>
+    &
 
-    <script src="/homejs.js"></script>
-    <script>
-        function showDescription(element) {
-            const content = element.querySelector('.service-content');
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
-        }
-    </script>
+    <script src="/js/homejs.js"></script>
+    <footer id="footer-container"></footer> <!-- Utiliser <footer> pour le footer -->
 </body>
 </html>

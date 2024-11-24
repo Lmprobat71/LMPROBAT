@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LM Probat - Entreprise du Bâtiment</title>
+    <meta name="description" content="LM Probat est une entreprise de bâtiment située à Gueugnon, spécialisée dans la plâtrerie, peinture, carrelage, faïence, maçonnerie, façade et enduit intérieur et extérieur.">
+    <meta name="keywords" content="LMProbat, bâtiment, plâtrerie, peinture, carrelage, faïence, maçonnerie, façade, enduit intérieur, enduit extérieur, Gueugnon">
+    <meta name="author" content="LM Probat">
+    <link rel="stylesheet" href="/css/basecss.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lightgallery-bundle.min.css">
+    <link rel="icon" href="/path/to/favicon.ico" type="image/x-icon">
+    <style>
+        :root {
+            --width: 120%;
+            --height: 120%;
+            --border-width: 230px;
+            --border-height: 230px;
+        }
+        html, body {
+        background: linear-gradient(to right, var(--nav-color1), var(--nav-color2), var(--nav-color3)); /* Gradient background */;
+        }
+            
+
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: left;
+            margin: 20px 5px;
+            align-items: center;
+            width: 99%;
+            min-height: 50vh;
+            background: radial-gradient(mistyrose, pink);
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .clipped-border {
+            position: relative;
+            -webkit-clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+            clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+            background: linear-gradient(black, lightgrey);
+            width: var(--border-width);
+            height: var(--border-height);
+            cursor: pointer;
+        }
+
+        .clipped-border img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .clipped-border:hover {
+            transform: translate(0%, -20%) scale(1);
+            z-index: 10;
+        }
+
+        @media screen and (max-width: 1000px) {
+            .clipped-border {
+                width: 200px;
+                height: 205px;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .clipped-border {
+                width: 195px;
+                height: 200px;
+                -webkit-clip-path: polygon(0% 50%, 25% 95%, 75% 95%, 100% 50%, 75% 5%, 25% 5%);
+                clip-path: polygon(0% 50%, 25% 95%, 75% 95%, 100% 50%, 75% 5%, 25% 5%);
+            }
+        }
+
+        .fixed-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 2px;
+            width: 85px; /* Adjust size as needed */
+            height: auto;
+        }
+
+        /* Personnalisation des miniatures et affichage */
+        .lg-backdrop {
+            background-color: rgba(0, 0, 0, 0.8) !important; /* Transparence du reste de la page */
+        }
+
+        .lg-thumb-outer {
+            background-color: rgba(255, 255, 255, 0.8) !important; /* Arrière-plan des miniatures */
+        }
+
+        .lg-thumb {
+            height: 80px; /* Taille des miniatures */
+        }
+
+        .lg-thumb img {
+            max-height: 60px;
+            max-width: 60px;
+            border-radius: 5px;
+        }
+
+        .lg-thumb .lg-active {
+            border: 2px solid #ff00ff; /* Couleur du cadre de la miniature active */
+        }
+
+    </style>
+</head>
+<body>
+<header class="custom-header"></header>
+<nav id="menu-container"></nav> <!-- Menu de navigation -->
+
+<main>
+    <div class="gallery-container">     
+        <div class="gallery">
+            <!-- Les images seront ajoutées dynamiquement par le script -->
+        </div>
+    </div>
+</main>
+
+<!-- Icône fixe en bas à droite -->
+<a href="/html/contact.html">
+    <img src="/images/contactnous.png" alt="Icône téléphone" class="fixed-icon">
+</a>
+
+<script src="/js/homejs.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/lightgallery.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/plugins/autoplay/lg-autoplay.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/plugins/fullscreen/lg-fullscreen.umd.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const galleryContainer = document.querySelector(".gallery");
+    
+        fetch('/html/gallery.php')
+            .then(response => response.json())
+            .then(images => {
+                images.forEach((image, index) => {
+                    const galleryItem = document.createElement("div");
+                    galleryItem.className = "clipped-border";
+                    const imgElement = document.createElement("img");
+                    imgElement.src = image;
+                    imgElement.alt = "Galerie Image";
+                    imgElement.setAttribute('data-src', image); // Ajout pour lightGallery
+                    galleryItem.appendChild(imgElement);
+    
+                    const isSmallScreen = window.matchMedia("(max-width: 400px)").matches;
+                    const isSmallScreen2 = window.matchMedia("(max-width: 1000px)").matches;
+                    const isTablet = window.matchMedia("(max-width: 1500px)").matches && !isSmallScreen;
+    
+                    if (isSmallScreen) {
+                        const row = Math.floor(index / 1);
+                        const col = index % 2;
+                        galleryItem.style.top = `${row * -40}px`; // Réduisez la valeur pour rapprocher les images
+                        galleryItem.style.left = `${col * -15 + (row % 2 === 0 ? -65 : 80)}px`;
+                    } else if (isSmallScreen2) {
+                        const row = Math.floor(index / 3);
+                        const col = index % 3;
+                        galleryItem.style.top = `${row * -40}px`; // Réduisez la valeur pour rapprocher les images
+                        galleryItem.style.left = `${col * -15 + (row % 2 === 0 ? -30 : 65)}px`;
+                    } else if (isTablet) {
+                        const row = Math.floor(index / 4);
+                        const col = index % 4;
+                        galleryItem.style.top = `${row * -40}px`; // Réduisez la valeur pour rapprocher les images
+                        galleryItem.style.left = `${col * 5 + (row % 2 === 0 ? -60 : 60)}px`;
+                    } else {
+                        const row = Math.floor(index / 6);
+                        const col = index % 6;
+                        galleryItem.style.top = `${row * -55}px`; // Réduisez la valeur pour rapprocher les images
+                        galleryItem.style.left = `${col * -15 + (row % 2 === 0 ? 0 : 110)}px`;
+                    }
+    
+                    galleryContainer.appendChild(galleryItem);
+                });
+    
+                // Initialiser lightGallery après avoir ajouté tous les éléments
+                lightGallery(document.querySelector(".gallery"), {
+                    selector: '.clipped-border img',
+                    plugins: [lgAutoplay, lgFullscreen],
+                    maxWidth: '80%',  // Largeur maximale de la fenêtre modale par rapport à la taille de l'écran
+                    maxHeight: '80%',  // Hauteur maximale de la fenêtre modale par rapport à la taille de l'écran
+                    speed: 500,
+                    mobileSettings: {
+                        maxWidth: '95%',  // Largeur maximale pour les appareils mobiles
+                        maxHeight: '95%'  // Hauteur maximale pour les appareils mobiles
+                    }
+                });
+    
+            })
+            .catch(error => console.error('Erreur lors du chargement des images:', error));
+    });
+    </script>
+<footer id="footer-container">
+    <p>&copy; 2023 LM Probat. Tous droits réservés.</p>
+</footer>
+</body>
+</html>

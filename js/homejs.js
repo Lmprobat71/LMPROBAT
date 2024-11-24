@@ -1,13 +1,3 @@
-// Délégation d'événements pour les liens de navigation
-document.querySelector('nav').addEventListener('click', function(e) {
-    if (e.target.tagName === 'A') {
-        e.preventDefault();
-        document.querySelector(e.target.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    }
-});
-
 // Utilisation de debouncing pour le défilement
 let timeout;
 window.addEventListener('scroll', function() {
@@ -81,7 +71,33 @@ function nextSlide() {
 setInterval(nextSlide, 3000); // Change de diapositive toutes les 3 secondes
 showSlide(currentSlide); // Affiche la première diapositive
 
-// Ajout d'un formulaire de contact dynamique
+// Fonction pour ouvrir/fermer le menu burger et fermer en cliquant ailleurs
+function toggleMenu() {
+    const menu = document.querySelector("nav ul");
+    const burger = document.querySelector(".burger");
+    menu.classList.toggle("active");
+    burger.classList.toggle("active");
+}
+
+// Fermer le menu lorsqu'on clique en dehors
+function closeMenuOnClickOutside(event) {
+    const burger = document.querySelector('.burger');
+    const menu = document.querySelector('nav ul');
+    if (menu.classList.contains('active') && !burger.contains(event.target) && !menu.contains(event.target)) {
+        menu.classList.remove('active');
+        burger.classList.remove('active');
+    }
+}
+
+document.addEventListener('click', closeMenuOnClickOutside);
+
+const burger = document.querySelector('.burger');
+burger.addEventListener('click', function(event) {
+    event.stopPropagation();
+    toggleMenu();
+});
+
+// Ajout d'un formulaire de contact dynamique avec gestion des erreurs
 document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const formData = new FormData(this);
@@ -97,5 +113,6 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     })
     .catch(error => {
         console.error('Erreur d\'envoi du formulaire:', error);
+        alert('Une erreur est survenue lors de l\'envoi du message.');
     });
 });

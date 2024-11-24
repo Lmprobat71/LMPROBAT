@@ -138,20 +138,30 @@
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/plugins/autoplay/lg-autoplay.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/plugins/fullscreen/lg-fullscreen.umd.min.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const galleryContainer = document.querySelector(".gallery");
-    
-        fetch('/html/gallery.php')
-            .then(response => response.json())
-            .then(images => {
-                images.forEach((image, index) => {
-                    const galleryItem = document.createElement("div");
-                    galleryItem.className = "clipped-border";
-                    const imgElement = document.createElement("img");
-                    imgElement.src = image;
-                    imgElement.alt = "Galerie Image";
-                    imgElement.setAttribute('data-src', image); // Ajout pour lightGallery
-                    galleryItem.appendChild(imgElement);
+   document.addEventListener("DOMContentLoaded", function () {
+    const galleryContainer = document.querySelector(".gallery");
+
+    fetch('/images.json')
+        .then(response => response.json())
+        .then(images => {
+            images.forEach((image, index) => {
+                const galleryItem = document.createElement("div");
+                galleryItem.className = "clipped-border";
+                const imgElement = document.createElement("img");
+                imgElement.src = image;
+                imgElement.alt = "Galerie Image";
+                imgElement.setAttribute('data-src', image); // Ajout pour lightGallery
+                galleryItem.appendChild(imgElement);
+                galleryContainer.appendChild(galleryItem);
+            });
+
+            // Ajoutez ici toute autre logique nécessaire pour afficher les images dans la galerie
+        })
+        .catch(error => {
+            console.error('Erreur lors du chargement des images:', error);
+        });
+});
+
     
                     const isSmallScreen = window.matchMedia("(max-width: 400px)").matches;
                     const isSmallScreen2 = window.matchMedia("(max-width: 1000px)").matches;

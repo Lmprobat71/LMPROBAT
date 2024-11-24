@@ -139,67 +139,67 @@
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/plugins/fullscreen/lg-fullscreen.umd.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const galleryContainer = document.querySelector(".gallery");
+    const galleryContainer = document.querySelector(".gallery");
 
-        fetch('/images.json')
-            .then(response => response.json())
-            .then(images => {
-                images.forEach((image, index) => {
-                    const galleryItem = document.createElement("div");
-                    galleryItem.className = "clipped-border";
-                    const imgElement = document.createElement("img");
-                    imgElement.src = image;
-                    imgElement.alt = "Galerie Image";
-                    imgElement.setAttribute('data-src', image); // Ajout pour lightGallery
-                    galleryItem.appendChild(imgElement);
+    fetch('/api/gallery')
+        .then(response => response.json())
+        .then(images => {
+            images.forEach((image, index) => {
+                const galleryItem = document.createElement("div");
+                galleryItem.className = "clipped-border";
+                const imgElement = document.createElement("img");
+                imgElement.src = image;
+                imgElement.alt = "Galerie Image";
+                imgElement.setAttribute('data-src', image); // Ajout pour lightGallery
+                galleryItem.appendChild(imgElement);
 
-                    // Code de positionnement en fonction de la taille de l'écran
-                    const isSmallScreen = window.matchMedia("(max-width: 400px)").matches;
-                    const isSmallScreen2 = window.matchMedia("(max-width: 1000px)").matches;
-                    const isTablet = window.matchMedia("(max-width: 1500px)").matches && !isSmallScreen;
+                const isSmallScreen = window.matchMedia("(max-width: 400px)").matches;
+                const isSmallScreen2 = window.matchMedia("(max-width: 1000px)").matches;
+                const isTablet = window.matchMedia("(max-width: 1500px)").matches && !isSmallScreen;
 
-                    if (isSmallScreen) {
-                        const row = Math.floor(index / 1);
-                        const col = index % 2;
-                        galleryItem.style.top = `${row * -40}px`; // Réduisez la valeur pour rapprocher les images
-                        galleryItem.style.left = `${col * -15 + (row % 2 === 0 ? -65 : 80)}px`;
-                    } else if (isSmallScreen2) {
-                        const row = Math.floor(index / 3);
-                        const col = index % 3;
-                        galleryItem.style.top = `${row * -40}px`; // Réduisez la valeur pour rapprocher les images
-                        galleryItem.style.left = `${col * -15 + (row % 2 === 0 ? -30 : 65)}px`;
-                    } else if (isTablet) {
-                        const row = Math.floor(index / 4);
-                        const col = index % 4;
-                        galleryItem.style.top = `${row * -40}px`; // Réduisez la valeur pour rapprocher les images
-                        galleryItem.style.left = `${col * 5 + (row % 2 === 0 ? -60 : 60)}px`;
-                    } else {
-                        const row = Math.floor(index / 6);
-                        const col = index % 6;
-                        galleryItem.style.top = `${row * -55}px`; // Réduisez la valeur pour rapprocher les images
-                        galleryItem.style.left = `${col * -15 + (row % 2 === 0 ? 0 : 110)}px`;
-                    }
+                if (isSmallScreen) {
+                    const row = Math.floor(index / 1);
+                    const col = index % 2;
+                    galleryItem.style.top = `${row * -40}px`; // Réduisez la valeur pour rapprocher les images
+                    galleryItem.style.left = `${col * -15 + (row % 2 === 0 ? -65 : 80)}px`;
+                } else if (isSmallScreen2) {
+                    const row = Math.floor(index / 3);
+                    const col = index % 3;
+                    galleryItem.style.top = `${row * -40}px`; // Réduisez la valeur pour rapprocher les images
+                    galleryItem.style.left = `${col * -15 + (row % 2 === 0 ? -30 : 65)}px`;
+                } else if (isTablet) {
+                    const row = Math.floor(index / 4);
+                    const col = index % 4;
+                    galleryItem.style.top = `${row * -40}px`; // Réduisez la valeur pour rapprocher les images
+                    galleryItem.style.left = `${col * 5 + (row % 2 === 0 ? -60 : 60)}px`;
+                } else {
+                    const row = Math.floor(index / 6);
+                    const col = index % 6;
+                    galleryItem.style.top = `${row * -55}px`; // Réduisez la valeur pour rapprocher les images
+                    galleryItem.style.left = `${col * -15 + (row % 2 === 0 ? 0 : 110)}px`;
+                }
 
-                    galleryContainer.appendChild(galleryItem);
-                });
-
-                // Initialiser lightGallery après avoir ajouté tous les éléments
-                lightGallery(document.querySelector(".gallery"), {
-                    selector: '.clipped-border img',
-                    plugins: [lgAutoplay, lgFullscreen],
-                    maxWidth: '80%',  // Largeur maximale de la fenêtre modale par rapport à la taille de l'écran
-                    maxHeight: '80%',  // Hauteur maximale de la fenêtre modale par rapport à la taille de l'écran
-                    speed: 500,
-                    mobileSettings: {
-                        maxWidth: '95%',  // Largeur maximale pour les appareils mobiles
-                        maxHeight: '95%'  // Hauteur maximale pour les appareils mobiles
-                    }
-                });
-            })
-            .catch(error => {
-                console.error('Erreur lors du chargement des images:', error);
+                galleryContainer.appendChild(galleryItem);
             });
-    });
+
+            // Initialiser lightGallery après avoir ajouté tous les éléments
+            lightGallery(document.querySelector(".gallery"), {
+                selector: '.clipped-border img',
+                plugins: [lgAutoplay, lgFullscreen],
+                maxWidth: '80%',  // Largeur maximale de la fenêtre modale par rapport à la taille de l'écran
+                maxHeight: '80%',  // Hauteur maximale de la fenêtre modale par rapport à la taille de l'écran
+                speed: 500,
+                mobileSettings: {
+                    maxWidth: '95%',  // Largeur maximale pour les appareils mobiles
+                    maxHeight: '95%'  // Hauteur maximale pour les appareils mobiles
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Erreur lors du chargement des images:', error);
+        });
+});
+
 </script>
 <footer id="footer-container">
     <p>&copy; 2023 LM Probat. Tous droits réservés.</p>
